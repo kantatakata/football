@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :orders
-
+  # 退会ステータスの絞り込み
   scope :only_active, -> { where(is_active: true) }
 
   validates :last_name, presence: true
