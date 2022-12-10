@@ -29,5 +29,5 @@ class Admin::CustomersController < ApplicationController
 
   def ensure_customer
     @customer = Customer.find(params[:id])
-
+  end
 end
