@@ -1,0 +1,29 @@
+<section class="inner">
+  <h2 class="section-ttl">ショッピングカート</h2>
+  <% if @cart_items.first %>
+    <div class="text-right mb-2">
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "date_confirm" => "カートを空にします。よろしいでしょうか？", class: "btn btn-danger" %>
+    </div>
+    <table classs="cart_items has_border mb-3">
+      <thead>
+        <tr>
+          <th colspan="2">商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <% item = cart_item.item %>
+          <tr>
+            <td>
+              <%= image_tag item.get_image, class: "cart_item_image" %>
+            </td>
+            <td><%= link_to item.name,item_path(item) %></td>
+            
+          </tr>
+      </tbody>
+    </table>
+</section>
