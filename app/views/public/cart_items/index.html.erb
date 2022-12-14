@@ -36,7 +36,14 @@
 					</tr>
 				<% end %>
 				<tr>
-    
+    			<td></td>
+					<td><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></td>
+					<td></td>
+					<td class="text-right">合計金額</td>
+					<td class="text-right bold"><%= @cart_items.sum(&:subtotal) %>円</td>
+					<td></td>
+				</tr>
+
       </tbody>
     </table>
 </section>
