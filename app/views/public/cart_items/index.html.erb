@@ -22,9 +22,21 @@
               <%= image_tag item.get_image, class: "cart_item_image" %>
             </td>
             <td><%= link_to item.name,item_path(item) %></td>
-            
-            
-          </tr>
+            						<td class="text-right"><%= item.with_tax_price %>円</td>
+						<td>
+							<%= form_with model: [item, cart_item] do |f| %>
+								<%= f.select :amount, [*(1..10)], {include_blank: false}, id: "cart_item_amount_#{cart_item.id}" %>
+								<%= f.submit "変更", class: "btn btn-primary", id: "submit_for_cart_item_#{cart_item.id}" %>
+							<% end %>
+						</td>
+						<td class="text-right"><%= cart_item.subtotal %>円</td>
+						<td class="text-center">
+							<%= link_to "削除", item_cart_item_path(item_id: item.id, id: cart_item.id), method: :delete, "data-confirm" => "#{item.name}をカートから削除します。よろしいでしょうか？", class: "btn btn-danger", id: "destroy_cart_item_#{cart_item.id}" %>
+						</td>
+					</tr>
+				<% end %>
+				<tr>
+    
       </tbody>
     </table>
 </section>
