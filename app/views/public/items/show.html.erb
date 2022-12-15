@@ -13,4 +13,15 @@
 			<div class="item_info">
 				<h4><%= @item.introduction %></h4>
 				<p>ジャンル: <%= link_to @item.genre.name, items_path(genre_id: @item.genre_id) %></p>
+				<p>
+				  ¥<%= @item.with_tax_price %>(税込)
+				  <% if @item.is_active? %>
+				  <spen class="text-active">販売中</spen>
+				  <% else %>
+				  <spen class="text-invalid">販売停止中</spen>
+				  <% end %>
+				</p><br>
+				<% if customer_signed_in? %>
+				 <% cart_item = current_customer.has_in_cart(@item) %>
+				 
   </div>
