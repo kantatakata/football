@@ -23,5 +23,10 @@
 				</p><br>
 				<% if customer_signed_in? %>
 				 <% cart_item = current_customer.has_in_cart(@item) %>
-				 
+					<% if cart_item %>
+						<%= form_with model: [@item, cart_item] do |f| %>
+							<p>こちらの商品は、既にカートに入っています。</p>
+							<%= f.select :amount, [*(1..10)] %>
+							<%= f.submit "数量変更", class: "btn btn-primary" %>
+						<% end %>
   </div>
