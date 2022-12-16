@@ -35,4 +35,13 @@
 							<%= f.select :amount, [*(1..10)], {selected: 1} %>
 							<%= f.submit "カートに入れる", class: "btn btn-primary" %>
 						<% end %>
-  </div>
+					<% else %>
+						<p class="bold">こちらの商品は、現在販売停止中です。</p>
+					<% end %>
+				<% else %>
+					<p>カート機能をご利用いただくには、<br><%= link_to "こちら", new_customer_registration_path, class: "underline" %>から新規登録を行なってください。</p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</section> 
