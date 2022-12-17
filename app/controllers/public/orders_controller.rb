@@ -23,5 +23,17 @@ class Public::OrdersController < ApplicationController
   
   def error
   end
+
+  def create
+    @order = current_customer.orders.new(order_params)
+    @order.shipping_cost = 800
+    @order.grand_total = @order.shipping_cost + @cart_items.sum(&:subtotal)
+    if @order.save
+      @order.create_order_details(current_customer)
+      redirect_to thanks_path
+    else
+      render :new
+    end
+  end
   
 end
