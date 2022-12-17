@@ -36,4 +36,11 @@ class Public::OrdersController < ApplicationController
     end
   end
   
+  def thanks
+  end
+
+  def index
+    @orders = current_customer.orders.includes(:order_details, :items).page(params[:page]).reverse_order
+  end
+
 end
