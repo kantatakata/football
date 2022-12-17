@@ -48,5 +48,15 @@ class Public::OrdersController < ApplicationController
     @order_details = @order.order_details.includes(:item)
   end
   
-  
+    private
+
+  def order_params
+    params.require(:order).permit(:postal_code, :destination, :name, :payment_method)
+  end
+
+  def ensure_cart_items
+    @cart_items = current_customer.cart_items.includes(:item)
+    redirect_to items_path unless @cart_items.first
+  end
+
 end
