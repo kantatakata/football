@@ -1,0 +1,49 @@
+<section class="inner">
+	<h2 class="section-ttl">注文情報確認</h2>
+	<div class="flex">
+		<table class="confirm_cart_items mr2 mb3 has_border">
+			<thead>
+				<tr>
+					<th colspan="2">商品名</th>
+					<th>単価(税込)</th>
+					<th>数量</th>
+					<th>小計</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @cart_items.each do |cart_item| %>
+					<% item = cart_item.item %>
+					<tr>
+						<td>
+							<%= image_tag item.get_image, class: "cart_item_image" %>
+						</td>
+						<td><%= item.name %></td>
+						<td><%= item.with_tax_price %>円</td>
+						<td><%= cart_item.amount %></td>
+						<td><%= cart_item.subtotal %>円</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<table class="confirm_prices has_border">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>送料</td>
+					<td>800</td>
+				</tr>
+				<tr>
+					<td>商品合計</td>
+					<td><%= @cart_items.sum(&:subtotal) %></td>
+				</tr>
+				<tr>
+					<td>総計</td>
+					<td class="bold"><%= 800 + @cart_items.sum(&:subtotal) %></td>
+				</tr>
+			</tbody>
+		</table>
