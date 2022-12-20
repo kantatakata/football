@@ -4,3 +4,6 @@
 		<div id="error_explanation">
 			<p><%= flash[:error] %></p>
 		</div>
+	<% end %>
+	<%= form_with model:@order, url: orders_confirm_path do |f| %>
+		<div class="field mb2">
