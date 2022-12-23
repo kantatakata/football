@@ -7,3 +7,9 @@
 	<% end %>
 	<%= form_with model:@order, url: orders_confirm_path do |f| %>
 		<div class="field mb2">
+			<h3>支払い方法</h3>
+	  	<%= f.radio_button :payment_method, "credit_card", :checked => true %>
+	  	<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %> <!-- クレジットカード -->
+	  	<%= f.radio_button :payment_method, "transfer" %>
+	  	<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %> <!-- 銀行振込 -->
+		</div>
