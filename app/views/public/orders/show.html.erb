@@ -65,3 +65,20 @@
 					<th></th>
 				</tr>
 			</thead>
+			<tbody>
+				<tr>
+					<td>送料</td>
+					<td><%= @order.shipping_cost %>円</td>
+				</tr>
+				<tr>
+					<td>商品合計</td>
+					<td><%= @order.order_details.sum(&:subtotal) %>円</td>
+				</tr>
+				<tr>
+					<td>総計</td>
+					<td class="bold"><%= @order.grand_total %>円</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
