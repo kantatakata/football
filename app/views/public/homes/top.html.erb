@@ -1,1 +1,15 @@
-<h1>かんただよ〜</h1>
+<section class="wrapper flex">
+	<div class="sidebar">
+		<h3>ジャンル一覧</h3>
+		<% @genres.each do |genre| %>
+			<%= link_to genre.name, items_path(genre_id: genre.id) %>
+		<% end %>
+	</div>
+	<div class="content">
+		<div class="mv">
+			<p>
+				ようこそ、NaganoCakeへ!<br>
+				このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要になります。
+			</p>
