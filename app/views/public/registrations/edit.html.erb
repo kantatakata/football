@@ -1,7 +1,14 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section class="inner">
+  <h2 class="section-ttl">パスワード編集</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
+  <%= form_with model: @user, url: customer_registration_path, id: 'edit_user', class: 'edit_user', local: true do |f| %>
+    <%= render "layouts/error_messages", resource: resource %>
+    <div class="field mb2">
+      <%= f.label :email, "メールアドレス" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+
 
   <div class="field">
     <%= f.label :email %><br />
