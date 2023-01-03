@@ -58,5 +58,19 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.includes(:item)
     redirect_to items_path unless @cart_items.first
   end
+_
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
